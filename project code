@@ -1,0 +1,112 @@
+#include <iostream>
+#include <string.h>
+
+using namespace std;
+
+void RemoveInventory(char invChar[7][4], int section);
+void CheckInventory(char invChart[7][4]);
+void AddInventory(char invChart[7][4], int section);
+
+int main() {
+    char invChart[7][4] = {{'X','X','X','X'},
+                            {'X','X','X','X'},
+                            {'X','X','X','X'},
+                            {'X','X','X','X'},
+                            {'X','X','X','X'},
+                            {'X','X','X','X'},
+                            {'X','X','X','X'}};
+    int selection = 0;
+    int section;
+    char enterAgain = 'N';
+    do {
+        cout << "[1] Check inventory\n[2] Add to inventory\n[3] Remove from inventory";
+        cin  >> selection;
+        while (selection < 1 || selection > 3) {
+            cout << "Enter a value between 1 and 3:";
+            cin >> selection;
+        }
+        switch(selection) {
+
+        case 1:
+            CheckInventory(invChart);
+            break;
+        case 2:
+            AddInventory(invChart, section);
+            break;
+        case 3:
+            RemoveInventory(invChart, section);
+            break;
+    }
+        cout << "\nWould you like to do something else?" << endl
+             << "Enter Y for yes and anything else to quit:";
+        cin  >> enterAgain;
+    } while(enterAgain == 'Y' || enterAgain == 'y');
+    
+    return 0;
+}
+
+void RemoveInventory(char invChart[7][4], int section) {
+    
+    cout << "Enter the section of inventory: 1 to 7 ";
+    cin >> section;
+    
+    if(invChart[section - 1][0] == 'X' && invChart[section - 1][1] == 'X' && invChart[section - 1][2] == 'X' && invChart[section - 1][3] == 'X') {
+        
+        invChart[section - 1][0] != 'X';
+        invChart[section - 1][1] != 'X';
+        invChart[section - 1][2] != 'X';
+        invChart[section - 1][3] != 'X';
+        cout << "Your item has been removed.";
+    }
+    else {
+        cout  << "Sorry, this section is already empty.";
+    }
+}
+
+void AddInventory(char invChart[7][4], int section) {
+    char name[10];
+    int weight;
+    int price;
+    int amount;
+    
+    cout << "Enter the section of inventory: 1 to 7 ";
+    cin >> section;
+    
+    if(invChart[section - 1][0] == 'X' && invChart[section - 1][1] == 'X' && invChart[section - 1][2] == 'X' && invChart[section - 1][3] == 'X') {
+
+        cout << "Enter item name";
+        cin >> name;
+        cout << "Enter item weight";
+        cin >> weight;
+        cout << "Enter item price";
+        cin >> price;
+        cout << "Enter item amount";
+        cin >> amount;
+        invChart[section - 1][0] = name[10];
+        invChart[section - 1][1] = weight;
+        invChart[section - 1][2] = price;
+        invChart[section - 1][3] = amount;
+        cout << "Your item has been added.";
+    }
+    else {
+        cout  << "Sorry, this section is not available.";
+    }
+    
+
+}
+
+void CheckInventory(char invChart[7][4]) {
+    cout << "AVAILABLE INVENTORY:" << endl;
+    for(int i = 0; i < 7; i++) {
+        cout << "\n";
+        for(int j = 0; j < 4; j++) {
+            if (invChart[i][j] != 'X') {
+                cout << invChart[i][j] << " ";
+            }
+            else {
+                cout << "  ";
+            }
+        }
+    }
+
+}
