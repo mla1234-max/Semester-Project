@@ -27,15 +27,16 @@ int main() {
     int section;
     char enterAgain = 'N';
     do {
-        cout << "[1] Check inventory\n"
+        cout << "\n[1] Check inventory\n"
              << "[2] Add to inventory\n"
              << "[3] Remove from inventory\n"
              << "[4] Add up total values\n"
              << "[5] Edit inventory\n"
+             << "[6] Exit\n"
              << "Select an action: ";
         cin >> selection;
-        while (selection < 1 || selection > 5) {
-            cout << "Enter a value between 1 and 5:";
+        while (selection < 1 || selection > 6) {
+            cout << "Enter a value between 1 and 6:";
             cin >> selection;
         }
         switch(selection) {
@@ -55,13 +56,10 @@ int main() {
         case 5:
             EditInv(invChart, invName, section);
             break;
+        case 6:
+            return 0;
         }
-        cout << "\nWould you like to do something else?" << endl
-             << "Enter Y for yes and anything else to quit: ";
-        cin  >> enterAgain;
-    } while(enterAgain == 'Y' || enterAgain == 'y');
-    
-    return 0;
+    } while(selection != 6);
 }
 
 void RemoveInventory(float invChart[7][4], string invName[7], int section) {
