@@ -27,7 +27,7 @@ int main() {
     int section;
     char enterAgain = 'N';
     do {
-        cout << "\n[1] Check inventory\n"
+        cout << "[1] Check inventory\n"
              << "[2] Add to inventory\n"
              << "[3] Remove from inventory\n"
              << "[4] Add up total values\n"
@@ -199,6 +199,7 @@ void CheckInventory(float invChart[7][4], string invName[7]) {
             }
         }
     }
+    cout << "\n";
 }
 
 void AddUpTotal(float invChart[7][4], string invName[7]) {
