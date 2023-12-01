@@ -1,5 +1,5 @@
 # Inventory System
-This is my semester project of my inventory system.
+### This is my semester project of my inventory system.
 
 ### This project consists of an inventory management system that provides info for and tracks items in an inventory, similar to what you would do in a video game.
 
